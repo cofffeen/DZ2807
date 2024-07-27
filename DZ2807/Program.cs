@@ -26,11 +26,17 @@ namespace Counter
             {
                 value = 0;
             }
+
+            public void StartFrom(int newValue)
+            {
+                value = newValue;
+            }
         }
 
         static void Main(string[] args)
         {
             Counter counter = new Counter();
+            counter.StartFrom(5);
             counter.Show();
             counter.Increment();
             counter.Show();
