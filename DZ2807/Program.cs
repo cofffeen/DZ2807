@@ -5,32 +5,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Dog
+namespace Point
 {
     internal class Program
     {
-        public class Dog(string name, int age)
+        public class Point(int x, int y)
         {
-            public string Name = name;
-            public int Age = age;
+            public int X = x;
+            public int Y = y;
 
-            public string GetDescription()
+            public string Print()
             {
-                return Name + " is " + Age + " years old";
+                return "(" + X + "," + Y + ")";
             }
 
-            public string Speak(string sound)
+            public double CalculateDistance(Point otherPoint)
             {
-                return Name + " says " + sound;
+                return Math.Sqrt((otherPoint.X - this.X) * (otherPoint.X - this.X) + (otherPoint.Y - this.Y) * (otherPoint.Y - this.Y));
             }
+
+
         }
 
         static void Main(string[] args)
         {
-            Dog dog = new Dog("Песик", 2);
-            Console.WriteLine(dog.GetDescription()); // Песик is 2 years old
-            Console.WriteLine(dog.Speak("Woof Woof")); // Песик says Woof Woof
-            Console.WriteLine(dog.Speak("Bow Wow")); // Песик says Bow Wow
+            Point p1 = new Point(1, 2);
+            Console.WriteLine(p1.Print()); // распечатает (1,2)
+            Point p2 = new Point(4, 6);
+            Console.WriteLine(p2.Print()); // распечатает (4,6)
+            Console.WriteLine(p1.CalculateDistance(p2)); // распечатает 5
+            Console.WriteLine(p2.CalculateDistance(p1)); // распечатает 5
 
         }
 
