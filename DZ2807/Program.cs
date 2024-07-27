@@ -3,43 +3,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
-namespace Counter
+namespace DriveACar
 {
     internal class Program
     {
-        public class Counter
+        public class Team
         {
-            int value = 0;
+            public string Name = "Gryffindor";
+            public int Points = 0;
 
-            public void Increment()
+            public void PrintInfo()
             {
-                value++;
+                Console.WriteLine(Name + ":" + Points);
+            }
+        }
+
+        public class Quidditch()
+        {
+            public Team RedTeam = new Team();
+            public Team BlueTeam = new Team();
+
+            public void ShowScore()
+            {
+                RedTeam.PrintInfo();
+                BlueTeam.PrintInfo();
             }
 
-            public void Show()
+            public void RedSnitch()
             {
-                Console.WriteLine("Текущее значение счетчика = " + value);
+                RedTeam.Points += 150;
+                Console.WriteLine("Red Team Won!");
             }
 
-            public void Reset()
+            public void BlueSnitch()
             {
-                value = 0;
-            }
-
-            public void StartFrom(int newValue)
-            {
-                value = newValue;
+                BlueTeam.Points += 150;
+                Console.WriteLine("Blue Team Won!");
             }
         }
 
         static void Main(string[] args)
         {
-            Counter counter = new Counter();
-            counter.StartFrom(5);
-            counter.Show();
-            counter.Increment();
-            counter.Show();
+            Quidditch quidditch = new Quidditch();
+            quidditch.RedTeam.Name = "Hufflepuff";
+            quidditch.BlueTeam.Name = "Ravenclaw";
+            quidditch.ShowScore();
+            //Hufflepuff:0
+            //Ravenclaw:0
+            quidditch.RedTeam.Points += 10;
+            quidditch.BlueTeam.Name = "Gryffindor";
+            quidditch.ShowScore();
+            //Hufflepuff:10
+            //Gryffindor:0
+
+
         }
 
     }
