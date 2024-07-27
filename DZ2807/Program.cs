@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DriveACar
+namespace Counter
 {
     internal class Program
     {
@@ -22,7 +22,10 @@ namespace DriveACar
                 Console.WriteLine("Текущее значение счетчика = " + value);
             }
 
-
+            public void Reset()
+            {
+                value = 0;
+            }
         }
 
         static void Main(string[] args)
