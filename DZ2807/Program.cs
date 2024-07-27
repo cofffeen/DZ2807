@@ -5,33 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Person
+namespace Dog
 {
     internal class Program
     {
-        public class Person(string UsersFirstName, string UsersSecondName, int usersAge)
+        public class Dog(string name, int age)
         {
-            public string FirstName = UsersFirstName;
-            public string SecondName = UsersSecondName;
-            public int age = usersAge;
+            public string Name = name;
+            public int Age = age;
 
-            public string GetFullName()
+            public string GetDescription()
             {
-                return FirstName + " " + SecondName;
+                return Name + " is " + Age + " years old";
             }
 
-            public bool IsAdult()
+            public string Speak(string sound)
             {
-                return age >= 18;
+                return Name + " says " + sound;
             }
-
         }
 
         static void Main(string[] args)
         {
-            Person person = new Person("Иосиф", "Дзеранов", 26);
-            Console.WriteLine(person.GetFullName()); // Дзеранов Иосиф
-            Console.WriteLine(person.IsAdult()); // True
+            Dog dog = new Dog("Песик", 2);
+            Console.WriteLine(dog.GetDescription()); // Песик is 2 years old
+            Console.WriteLine(dog.Speak("Woof Woof")); // Песик says Woof Woof
+            Console.WriteLine(dog.Speak("Bow Wow")); // Песик says Bow Wow
 
         }
 
