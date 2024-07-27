@@ -5,36 +5,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Point
+namespace FootballPlayer
 {
     internal class Program
     {
-        public class Point(int x, int y)
+        public class FootballPlayer(string name, string surname)
         {
-            public int X = x;
-            public int Y = y;
+            public string Name = name;
+            public string Surname = surname;
+            public int Goals = 0;
+            public int Assists = 0;
 
-            public string Print()
+            public void AddScore(int newGoals)
             {
-                return "(" + X + "," + Y + ")";
+                Goals += newGoals;
             }
 
-            public double CalculateDistance(Point otherPoint)
+            public void AddAssists(int newAssists)
             {
-                return Math.Sqrt((otherPoint.X - this.X) * (otherPoint.X - this.X) + (otherPoint.Y - this.Y) * (otherPoint.Y - this.Y));
+                Assists += newAssists;
             }
 
+
+            public void ShowStatistics()
+            {
+                Console.WriteLine(Surname + " " + Name + " - голы: " + Goals + ", передачи: " + Assists);
+            }
 
         }
 
         static void Main(string[] args)
         {
-            Point p1 = new Point(1, 2);
-            Console.WriteLine(p1.Print()); // распечатает (1,2)
-            Point p2 = new Point(4, 6);
-            Console.WriteLine(p2.Print()); // распечатает (4,6)
-            Console.WriteLine(p1.CalculateDistance(p2)); // распечатает 5
-            Console.WriteLine(p2.CalculateDistance(p1)); // распечатает 5
+            FootballPlayer player1 = new FootballPlayer("Cristiano", "Ronaldo");
+            player1.AddScore(711);
+            player1.AddAssists(169);
+            player1.ShowStatistics(); // Ronaldo Cristiano - голы: 711, передачи: 169
+
+            FootballPlayer player2 = new FootballPlayer("Lionel", "Messi");
+            player2.AddScore(682);
+            player2.AddAssists(240);
+            player2.ShowStatistics(); // Messi Lionel - голы: 682, передачи: 240
 
         }
 
