@@ -5,46 +5,45 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace FootballPlayer
+namespace Selector
 {
     internal class Program
     {
-        public class FootballPlayer(string name, string surname)
+        public class Selector(int[] array)
         {
-            public string Name = name;
-            public string Surname = surname;
-            public int Goals = 0;
-            public int Assists = 0;
+            public int[] Array = array;
 
-            public void AddScore(int newGoals)
+            public void PrintOdds()
             {
-                Goals += newGoals;
+                for (int i = 0; i < Array.Length; i++)
+                {
+                    if (Array[i] % 2 != 0)
+                    {
+                        Console.Write(Array[i] + " ");
+                    }
+                }
             }
 
-            public void AddAssists(int newAssists)
+            public void PrintEvens()
             {
-                Assists += newAssists;
+                for (int i = 0; i < Array.Length; i++)
+                {
+                    if (Array[i] % 2 == 0)
+                    {
+                        Console.Write(Array[i] + " ");
+                    }
+                }
             }
-
-
-            public void ShowStatistics()
-            {
-                Console.WriteLine(Surname + " " + Name + " - голы: " + Goals + ", передачи: " + Assists);
-            }
-
         }
 
         static void Main(string[] args)
         {
-            FootballPlayer player1 = new FootballPlayer("Cristiano", "Ronaldo");
-            player1.AddScore(711);
-            player1.AddAssists(169);
-            player1.ShowStatistics(); // Ronaldo Cristiano - голы: 711, передачи: 169
+            int[] numbers = new int[] { 1, 2, 3, 4, 5, 6 };
+            Selector selector = new Selector(numbers);
 
-            FootballPlayer player2 = new FootballPlayer("Lionel", "Messi");
-            player2.AddScore(682);
-            player2.AddAssists(240);
-            player2.ShowStatistics(); // Messi Lionel - голы: 682, передачи: 240
+            selector.PrintOdds(); // 1 3 5
+            Console.WriteLine();
+            selector.PrintEvens(); // 2 4 6
 
         }
 
