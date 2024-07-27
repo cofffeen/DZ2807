@@ -15,6 +15,12 @@ namespace DZ
             public string LastName = "Неизвестная фамилия";
             public int Age = -1;
             public double Rating = 0.1;
+
+            public void PrintSmallInfo()
+            {
+                Console.WriteLine(LastName + " " + FirstName[0] + ".");
+            }
+
         }
 
         static void Main(string[] args)
@@ -24,6 +30,8 @@ namespace DZ
             s.LastName = "Camry";
             s.Age = 3;
             Console.WriteLine(s.FirstName + " " + s.LastName + " " + s.Age);
+
+            s.PrintSmallInfo();
         }
 
     }
