@@ -5,59 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace DriveACar
+namespace Person
 {
     internal class Program
     {
-        public class Team
+        public class Person(string UsersFirstName, string UsersSecondName, int usersAge)
         {
-            public string Name = "Gryffindor";
-            public int Points = 0;
+            public string FirstName = UsersFirstName;
+            public string SecondName = UsersSecondName;
+            public int age = usersAge;
 
-            public void PrintInfo()
+            public string GetFullName()
             {
-                Console.WriteLine(Name + ":" + Points);
-            }
-        }
-
-        public class Quidditch()
-        {
-            public Team RedTeam = new Team();
-            public Team BlueTeam = new Team();
-
-            public void ShowScore()
-            {
-                RedTeam.PrintInfo();
-                BlueTeam.PrintInfo();
+                return FirstName + " " + SecondName;
             }
 
-            public void RedSnitch()
+            public bool IsAdult()
             {
-                RedTeam.Points += 150;
-                Console.WriteLine("Red Team Won!");
+                return age >= 18;
             }
 
-            public void BlueSnitch()
-            {
-                BlueTeam.Points += 150;
-                Console.WriteLine("Blue Team Won!");
-            }
         }
 
         static void Main(string[] args)
         {
-            Quidditch quidditch = new Quidditch();
-            quidditch.RedTeam.Name = "Hufflepuff";
-            quidditch.BlueTeam.Name = "Ravenclaw";
-            quidditch.ShowScore();
-            //Hufflepuff:0
-            //Ravenclaw:0
-            quidditch.RedTeam.Points += 10;
-            quidditch.BlueTeam.Name = "Gryffindor";
-            quidditch.ShowScore();
-            //Hufflepuff:10
-            //Gryffindor:0
-
+            Person person = new Person("Иосиф", "Дзеранов", 26);
+            Console.WriteLine(person.GetFullName()); // Дзеранов Иосиф
+            Console.WriteLine(person.IsAdult()); // True
 
         }
 
